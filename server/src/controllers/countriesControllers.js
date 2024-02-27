@@ -1,4 +1,4 @@
-const { Activity, Country } = require('../db')
+const { Country } = require('../db')
 const axios = require('axios')
 
 const getCountriesDB = async() => {
@@ -43,7 +43,7 @@ const getAllCountries = async(name) => {
     if (name) {
         countryName = allCountries.filter((c) => c.nombre.toLowerCase().includes(name.toLowerCase()));
         if (countryName.length) return countryName;
-        throw new Error("No se encontro ningun país con ese nombre");
+        throw new Error("No se encontró ningún país con ese nombre");
     }
     return allCountries
 };

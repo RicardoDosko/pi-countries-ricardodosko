@@ -1,0 +1,7 @@
+.cards__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 730px;
+}

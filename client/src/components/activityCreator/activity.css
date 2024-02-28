@@ -1,0 +1,107 @@
+form {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 800px;
+  /* min-width: 800px; */
+  margin: 0 auto;
+}
+.act {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.act h1 {
+  color: #fff;
+  padding: 20px;
+}
+
+.act p {
+  padding: 10px;
+  color: #ea1f48;
+}
+
+.act label {
+  text-align: left;
+  color: #fff;
+  padding: 10px;
+}
+
+.act input {
+  padding: 10px;
+  background-color: transparent;
+}
+
+.act .bad {
+  border: none;
+  border-bottom: 2px solid #ea1f48;
+}
+
+.act .good {
+  border: none;
+  border-bottom: 2px solid #fff;
+}
+
+.act .paises {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+/* .selects select {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+} */
+.act select {
+  margin: 20px;
+  padding: 10px;
+  width: 300px;
+  background-color: #2a3142;
+  color: #fff;
+}
+
+.selectCountry {
+  margin: 0 auto;
+}
+
+.seleccionados {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 10px;
+  color: #fff;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contenedores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #2a3142;
+  gap: 10px;
+}
+
+.contenedores button {
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #2a3142;
+  border: 1px solid #767676;
+  color: #fff;
+}
+
+.create button {
+  margin: 20px;
+  padding: 10px;
+  background-color: #2a3142;
+  border: 1px solid #767676;
+  color: #fff;
+}

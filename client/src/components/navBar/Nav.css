@@ -1,0 +1,64 @@
+.allNav {
+  display: flex;
+  padding: 25px;
+  text-align: center;
+  justify-content: space-between;
+  background-color: #2a3142;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.25s;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -ms-transition: color 0.25s;
+  -o-transition: color 0.25s;
+}
+
+a:hover {
+  color: #5ffafc;
+}
+
+.left {
+  display: flex;
+  gap: 20px;
+}
+
+.right {
+  display: flex;
+  gap: 15px;
+}
+
+.right input {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 1px transparent;
+  background-color: #ffffff;
+}
+
+.right button {
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: 1px transparent;
+  background-color: #ffffff;
+  color: #2e1e43;
+  font-weight: 600;
+  transition: background-color 0.25s;
+  -webkit-transition: background-color 0.25s;
+  -moz-transition: background-color 0.25s;
+  -ms-transition: background-color 0.25s;
+  -o-transition: background-color 0.25s;
+}
+
+.right button:hover {
+  background-color: #02fe57;
+}

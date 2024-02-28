@@ -1,20 +1,48 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
     text-align: center;
 }
 
-body {
-    background-image: url('./assets/fondo2.webp');
-    /* URL de tu imagen de fondo  */
-    background-size: cover;
-    /* Ajusta la imagen para cubrir todo el contenedor  */
-    background-position: center;
-    /* Centra la imagen de fondo  */
-    background-attachment: fixed;
-    height: 100vh;
-    /* Establece la altura del componente al 100% del viewport height  */
+#root {
     width: 100%;
-    /* Establece el ancho del componente al 100%  */
+    min-height: 100%;
+    text-align: center;
+}
+
+section {
+    min-height: 90vh;
+}
+
+body {
+    min-height: 100%;
+    font-family: "DM Sans", sans-serif;
+}
+
+input {
+    border: 1px solid transparent;
+    background-color: #2a3142;
+}
+
+input:focus {
+    outline: 2px solid transparent;
+}
+
+::placeholder {
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.other {
+    background-color: #252735;
 }

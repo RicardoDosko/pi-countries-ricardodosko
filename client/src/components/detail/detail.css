@@ -1,0 +1,80 @@
+.detail {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* fondo */
+.detail2 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: #2a3142;
+  padding: 30px;
+  width: 80%;
+  gap: 50px;
+  color: #fff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.country {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.detail2 .left {
+  flex: 1;
+}
+
+.detail2 .left img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.detail2 .right {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.detail2 .right span {
+  color: #5ffafc;
+  /* margin-right: 5px; */
+}
+
+.detail2 .right h1 {
+  font-size: 2.5rem;
+}
+
+.detail2 .right h2 {
+  font-size: 1.5rem;
+}
+
+.activities {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.activities ul {
+  list-style: none;
+}
+
+.actName {
+  display: flex;
+  text-align: left;
+  justify-content: left;
+}
+
+.activities li {
+  display: flex;
+  text-align: left;
+  justify-content: left;
+  flex-direction: column;
+}

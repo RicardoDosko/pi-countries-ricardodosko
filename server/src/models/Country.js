@@ -1,49 +1,41 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
-
 module.exports = (sequelize) => {
-    // defino el modelo
-    sequelize.define('Country', {
-        id: {
-            type: DataTypes.STRING(3),
-            primaryKey: true, // Marcamos 'id' como la clave primaria
-            allowNull: false,
-            validate: {
-                len: [3]
-            }
-        },
-        nombre: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        img_band: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        continente: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        capital: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        subregion: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        area: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        poblacion: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        mapa: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        }
-    }, { timestamps: false }); //Cuando timestamps se establece en false, Sequelize no añadirá automáticamente los campos createdAt y updatedAt al modelo country
+  // defino el modelo
+  sequelize.define(
+    "Country",
+    {
+      cca3: {
+        type: DataTypes.STRING,
+      },
+      nameOfficial: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      nameCommon: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      flag: {
+        type: DataTypes.STRING,
+      },
+      continent: {
+        type: DataTypes.STRING,
+      },
+      capital: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+      },
+      subregion: {
+        type: DataTypes.STRING,
+      },
+      area: {
+        type: DataTypes.INTEGER,
+      },
+      population: {
+        type: DataTypes.INTEGER,
+      },
+    },
+    { timestamps: false }
+  );
 };

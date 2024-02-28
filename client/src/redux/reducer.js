@@ -1,66 +1,167 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME, GET_DETAIL_COUNTRIES, ORD_BY_ALPHA, ORD_ALPHA_REV, ORD_BY_POPULATION, ORD_BY_CONTINENT, SHOW_ACTIVITY, ORD_BY_POPULATION_REV } from "./actionTypes";
-import { functionOrdAlpha, functionOrdPop } from "./actions";
+import {
+    SET_ALL_COUNTRIES,
+    GET_COUNTRY_BY_NAME,
+    ORDERPOP,
+    ORDERALPH,
+    FILTERCONT,
+    POST_ACTIVITIES,
+    GET_ACTIVITIES,
+    FILTERACT,
+    RESET,
+} from "./actions";
 
 const initialState = {
-    allCountries: [],
+    countries: [], //at '/home' filt
+    allCountries: [], //at '/home' all
+    // activities: [], //filt
     allActivities: [],
-    allCountriesCopy: [],
-    countryDetail: [],
-}
+};
 
-function rootReducer(state = initialState, action) {
+const rootReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        //?-------------------------------------------------------- SET_ALL_COUNTRIES
 
-    switch (action.type) {
-        case GET_ALL_COUNTRIES:
+        case SET_ALL_COUNTRIES:
             return {
                 ...state,
-                allCountries: action.payload,
-                allCountriesCopy: action.payload,
-            }
+                allCountries: payload,
+                countries: payload,
+            };
+
+            //?-------------------------------------------------------- GET_COUNTRY_BY_NAME
+
         case GET_COUNTRY_BY_NAME:
             return {
                 ...state,
-                allCountries: action.payload,
-            }
-        case GET_DETAIL_COUNTRIES:
-            return {
-                ...state,
-                countryDetail: action.payload,
-            }
-        case ORD_BY_ALPHA:
-            return {
-                ...state,
-                allCountries: state.allCountries.slice().sort(functionOrdAlpha),
-            }
-        case ORD_ALPHA_REV:
-            return {
-                ...state,
-                allCountries: state.allCountries.slice().sort(functionOrdAlpha).reverse(),
-            }
-        case ORD_BY_CONTINENT:
-            return {
-                ...state,
-                allCountries: state.allCountries.filter((c) => c.continente === action.payload),
-            }
-        case ORD_BY_POPULATION:
-            return {
-                ...state,
-                allCountries: state.allCountries.slice().sort(functionOrdPop).reverse()
-            }
-        case ORD_BY_POPULATION_REV:
-            return {
-                ...state,
-                allCountries: state.allCountries.slice().sort(functionOrdPop),
-            }
-        case SHOW_ACTIVITY:
-            return {
-                ...state,
-                allActivities: state.allCountries.filter((c) => { return c.allActivities.some((a) => a.nombre === action.payload) })
-            }
-        default:
-            return state
-    }
+                countries: payload,
+            };
 
-}
+            //?-------------------------------------------------------- ORDERPOP
+
+        case ORDERPOP:
+            let pop;
+            if (state.countries.length === 0) {
+                pop = [...state.allCountries];
+            } else {
+                pop = [...state.countries];
+            }
+
+            return {
+                ...state,
+                countries: pop.slice().sort((a, b) => {
+                    switch (payload) {
+                        case "Ascendente":
+                            return a[0].population - b[0].population;
+                        case "Descendente":
+                            return b[0].population - a[0].population;
+                        default:
+                            return 0;
+                    }
+                }),
+            };
+
+            //?-------------------------------------------------------- ORDERALPH
+
+        case ORDERALPH:
+            let orderedCountries;
+            if (state.countries.length === 0) {
+                orderedCountries = [...state.allCountries];
+                cons;
+            } else {
+                orderedCountries = [...state.countries];
+            }
+
+            switch (payload) {
+                case "Asc":
+                    orderedCountries.sort((a, b) =>
+                        a[0].nameCommon.localeCompare(b[0].nameCommon)
+                    );
+                    break;
+                case "Desc":
+                    orderedCountries.sort((a, b) =>
+                        b[0].nameCommon.localeCompare(a[0].nameCommon)
+                    );
+                    break;
+                default:
+                    break;
+            }
+
+            return {
+                ...state,
+                countries: orderedCountries,
+            };
+
+            //?-------------------------------------------------------- FILTERCONT
+
+        case FILTERCONT:
+            const filteredContinents =
+                payload === "All" ? {...state, countries: state.allCountries } : {
+                    ...state,
+                    countries: state.allCountries.filter(
+                        (c) => c[0].continent === payload
+                    ),
+                };
+
+            // return filteredContinents;
+            return {
+                ...state,
+                countries: filteredContinents.countries,
+            };
+
+            //?-------------------------------------------------------- POST_ACTIVITIES
+
+        case POST_ACTIVITIES:
+            return {
+                ...state,
+                // allActivities: [...state.allActivities, payload],
+            };
+
+            //?-------------------------------------------------------- GET_ACTIVITIES
+
+        case GET_ACTIVITIES:
+            console.log("getAct: ", payload);
+            return {
+                ...state,
+                allActivities: payload,
+            };
+
+            //?-------------------------------------------------------- FILTERACT
+
+        case FILTERACT:
+            let filteredActivities;
+            filteredActivities =
+                payload === "All" ?
+                state.allCountries.filter((c) => {
+                    return c[1].find((a) => a);
+                }) // Si se selecciona "All", muestra todos los países
+                :
+                state.allCountries.filter((c) => {
+                    return c[1].find((a) => a.name === payload);
+                });
+            if (filteredActivities.length === 0) {
+                alert("No hay países asociados a ninguna actividad");
+
+                preventDefault();
+            }
+
+            return {
+                ...state,
+
+            };
+
+            //?-------------------------------------------------------- RESET
+
+        case RESET:
+            return {
+                ...state,
+                countries: state.allCountries,
+            };
+
+            //?-------------------------------------------------------- default
+
+        default:
+            return {...state };
+    }
+};
 
 export default rootReducer;

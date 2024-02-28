@@ -1,29 +1,32 @@
-const { DataTypes } = require('sequelize');
-
+const { DataTypes } = require("sequelize");
+// Exportamos una funcion que define el modelo
+// Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
-    // defino el modelo
-    sequelize.define('Activity', {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true, // Marcamos 'id' como la clave primaria
-            allowNull: false,
-            autoIncrement: true
-        },
-        nombre: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        dificultad: {
-            type: DataTypes.ENUM("1", "2", "3", "4", "5"),
-            allowNull: false,
-        },
-        duracion: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        temporada: {
-            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
-            allowNull: false,
-        },
-    }, { timestamps: false }); //Cuando timestamps se establece en false, Sequelize no añadirá automáticamente los campos createdAt y updatedAt al modelo country
+  // defino el modelo
+  sequelize.define(
+    "Activity",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      difficulty: {
+        type: DataTypes.ENUM("1", "2", "3", "4", "5"),
+      },
+      duration: {
+        type: DataTypes.STRING,
+      },
+      season: {
+        type: DataTypes.ENUM("Summer", "Fall", "Winter", "Spring"),
+      },
+    },
+    {
+      timestamps: false,
+    }
+  );
 };

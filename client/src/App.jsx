@@ -1,27 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-//Styles
-import "./App.css";
-// VIEWS
-import Landing from "./views/landing/Landing";
-import About from "./views/About/About";
-// import CreateActivity from "./views/form-page/CreateActivity"
-import Home from "./views/Home/Home";
-import Details from "./views/Details/Details";
+import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+//?----------------------------------------- components
 
-// import Details from './views/details/Details'
+import Home from "./components/home/Home";
+import Detail from "./components/detail/Detail";
+import Nav from "./components/navBar/Nav";
+import ActivityCreator from "./components/activityCreator/ActivityCreator";
+//?----------------------------------------- style
+import "./App.css";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
+    <main className={`App ${location.pathname === "/" ? "landing" : "other"}`}>
+      <Nav></Nav>
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route exact path="/about" element={<About />} />
-        <Route exact path="/landing" element={<Landing />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/details" element={<Details />} />
-        {/*  <Route exact path='/create-activity' element={<CreateActivity />} /> */}
+        <Route className="other" path="/" element={<Home></Home>}></Route>
+        <Route path="/detail/:id" element={<Detail></Detail>}></Route>
+        <Route
+          path="/create"
+          element={<ActivityCreator></ActivityCreator>}
+        ></Route>
       </Routes>
-    </Router>
+    </main>
   );
 }
 

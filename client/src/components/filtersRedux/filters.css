@@ -1,0 +1,26 @@
+.filt {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.filt select {
+  padding: 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.filt button {
+  padding: 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border: none;
+}

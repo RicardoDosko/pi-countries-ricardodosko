@@ -1,18 +1,29 @@
-/* eslint-disable react/prop-types */
-import style from "./card.module.css";
+import { Link } from "react-router-dom";
+import "./card.css";
 
-function Card({ id, nombre, continente, img_band }) {
+const Card = ({ flag, id, continent, population, nameCommon }) => {
   return (
-    <div id="card1" className={style.card}>
-      <img src={img_band} alt="" />
-      <div className={style.card__content}>
-        <p className={style.card__title}>Pais: {nombre}</p>
-        <p className={style.card__description}>Continente: {continente}</p>
+    <div className="card">
+      <div className="top">
+        <img src={flag} />
+      </div>
 
-        <p className={style.card__description}>id:{id}</p>
+      <div className="text">
+        <h2>{nameCommon}</h2>
+        <p>
+          <span>Continent: </span>
+          {continent}
+        </p>
+        <p>
+          <span>population: </span>
+          {population}
+        </p>
+        <Link to={`/detail/${id}`}>
+          <button>Learn more</button>
+        </Link>
       </div>
     </div>
   );
-}
+};
 
 export default Card;

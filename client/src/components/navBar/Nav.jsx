@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <div className="allNav">
       <div className="left">
-        <Link to="/home">
+        <Link to="/">
           <p>Home</p>
         </Link>
         <Link to="/create">

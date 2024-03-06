@@ -13,7 +13,7 @@ import {
 const initialState = {
     countries: [], //at '/home' filt
     allCountries: [], //at '/home' all
-    // activities: [], //filt
+    //activities: [], //filt
     allActivities: [],
 };
 
@@ -128,6 +128,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
             //?-------------------------------------------------------- FILTERACT
 
         case FILTERACT:
+
             let filteredActivities;
             filteredActivities =
                 payload === "All" ?
@@ -137,6 +138,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 :
                 state.allCountries.filter((c) => {
                     return c[1].find((a) => a.name === payload);
+
                 });
             if (filteredActivities.length === 0) {
                 alert("No hay países asociados a ninguna actividad");
@@ -146,7 +148,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
             return {
                 ...state,
-
+                countries: filteredActivities
             };
 
             //?-------------------------------------------------------- RESET
@@ -161,6 +163,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
         default:
             return {...state };
+
     }
 };
 

@@ -1,7 +1,7 @@
 const { Country, Activity } = require("../db");
 
 const postActivities = async(req, res) => {
-    const { name, difficulty, duration, season, countries } = req.query;
+    const { name, difficulty, duration, season, countries } = req.body;
     console.log(countries);
     try {
         const myCountries = await Country.findAll({

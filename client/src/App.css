@@ -27,7 +27,7 @@ body {
 
 input {
     border: 1px solid transparent;
-    background-color: #2a3142;
+    background-color: #63ae9a;
 }
 
 input:focus {
@@ -44,5 +44,5 @@ input:focus {
 }
 
 .other {
-    background-color: #252735;
+    background-color: #0a4533;
 }
